@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random password</title>
+    <!-- google fonts custom link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- custom css link -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="contianer">
+        
+            <h1>Generate a <br> <span>Random password</span></h1>
+        <div id="display">
+            <input type="text" id="password" placeholder="password">
+        <img src="img/copy.png">
+    
+        </div>
+
+    <button id="new_password"><img src="img/generate.png" >generate password</button>
+  
+</div>
+
+   <script>
+    const passwordBox = document.getElementById("password");
+    
+    const basic = 12;
+    const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowerCase ="abcdefghijklmnpqrstuvwxyz";
+    const number = "0123456789";
+    const symbol = "@#$%^&*()_+{:|-`][}";
+    
+    const allChars = upperCase + lowerCase + number + symbol ;
+   
+    let generate = document.getElementById("new_password");
+    
+    
+    function createPassword (){
+        let password = "";
+    
+        password +=  upperCase[ Math.floor(Math.random() * upperCase.length)];
+        password +=  lowerCase[ Math.floor(Math.random() * lowerCase.length)];
+        password +=  number[ Math.floor(Math.random() * number.length)];
+        password +=  symbol[ Math.floor(Math.random() * symbol.length)];
+    
+        while(basic > password.length){
+            password +=  allChars[Math.floor(Math.random() * allChars.length)];
+        }
+    
+        passwordBox.value = password;
+       
+    }
+
+   
+
+
+  
+    
+
+    generate.addEventListener('click', function(){
+        createPassword ();
+        
+    })
+    </script>
+</body>
+</html>
